@@ -1,0 +1,42 @@
+# Learning Random Walk
+# Python 3.x
+
+# Importing numpy as np and setting the seed to 202 to allow reproducibility
+import numpy as np
+np.random.seed(202)
+
+# Initialize an empty list and setting the first step of the walk as 0, as any walk would start from beginning
+random_walk = [0]
+
+# Writing for loop for 100 steps of the walk
+for x in range(100) :
+    # Assigining the last element of random_walk list to step
+    step = random_walk[-1]
+
+    # dice is a random number storing variable - say a dice in practical life which generates a random number between 1 and 6 (both inclusive)
+    dice = np.random.randint(1,7)
+
+    # Writing conditional to calculate the value of step based on the random number generated
+    if dice <= 2:
+        step = step - 1
+    elif dice <= 5:
+        step = step + 1
+    else:
+        step = step + np.random.randint(1,7)
+
+    # After the value of step is calculated from the conditional, it is appended to the list
+    random_walk.append(step)
+
+# Prints out the list random walk
+print(random_walk)
+
+# Plotting the random walk along a variable y
+y = [i for i in range(101)] # 101 values are used as in the random_Walk array each element is added to the initialised list. So 101 elements exist in random_walk
+
+# Importing pyplot from matplotlib as plt to permit plotting of graph
+import matplotlib.pyplot as plt
+
+# Plotting random_walk on X-axis and y on Y-Axis
+plt.plot(random_walk, y)
+plt.show()
+
